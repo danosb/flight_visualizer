@@ -5,12 +5,14 @@ from branca.colormap import LinearColormap
 import numpy as np
 
 def parse_gps(gps_str):
-    # Parses the GPS coordinates from the string.
+    if not isinstance(gps_str, str):
+        return None  # or return (None, None) if you need two values
     try:
         lat, lon = map(float, gps_str.split(','))
-        return lat, lon
-    except ValueError:
+        return (lat, lon)
+    except Exception:
         return None
+
 
 # Load your data
 df = pd.read_csv('flights.csv')  # Replace with your CSV file path

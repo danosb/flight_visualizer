@@ -42,7 +42,7 @@ for coord, freq in coords_freq.items():
     folium.CircleMarker(location=coord, radius=9, color=None, fill=True, fill_color=color, fill_opacity=opacity, weight=0).add_to(mymap)
 
 # Add the color map legend
-color_map.caption = 'Count of Visits'
+color_map.caption = 'Count of Flights'
 mymap.add_child(color_map)
 
 # Increase the font size of the legend labels

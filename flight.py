@@ -38,7 +38,7 @@ mymap = folium.Map(location=[average_lat, average_lon], zoom_start=2)  # Adjust 
 # Add circles with gradient-like effect based on frequency
 for coord, freq in coords_freq.items():
     color = color_map(freq)
-    opacity = np.clip(0.3 + 0.3 * (1 - freq / max(coords_freq.values())), 0, 0.9)  # Adjust opacity based on frequency
+    opacity = np.clip(0.5 + 0.4 * (freq / max(coords_freq.values())), 0, 0.9)  # Adjust opacity based on frequency
     folium.CircleMarker(location=coord, radius=9, color=None, fill=True, fill_color=color, fill_opacity=opacity, weight=0).add_to(mymap)
 
 # Add the color map legend

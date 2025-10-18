@@ -52,8 +52,24 @@ for coord, freq in coords_freq.items():
 color_map.caption = 'Count of Flights'
 mymap.add_child(color_map)
 
-# Increase the font size of the legend labels
-mymap.get_root().html.add_child(folium.Element("<style>.leaflet-control.leaflet-control-legend .leaflet-control-legend-caption {font-size: 64px !important;}</style>"))
+# Reorder the caption to appear below the color bar
+mymap.get_root().html.add_child(folium.Element("""
+<style>
+.leaflet-control.leaflet-control-colormap {
+    display: flex !important;
+    flex-direction: column !important;
+}
+.leaflet-control.leaflet-control-colormap .caption {
+    order: 2 !important;
+    font-size: 14px !important; 
+    font-weight: bold !important;
+    margin-top: 8px !important;
+}
+.leaflet-control.leaflet-control-colormap img {
+    order: 1 !important;
+}
+</style>
+"""))
 
 # Save the map to an HTML file
 mymap.save('heatmap.html')

@@ -62,8 +62,11 @@ mymap.get_root().html.add_child(folium.Element("""
 .leaflet-control.leaflet-control-colormap .caption {
     order: 2 !important;
     font-size: 14px !important; 
-    font-weight: bold !important;
+    font-weight: 900 !important;
     margin-top: 8px !important;
+}
+.caption {
+    font-weight: 900 !important;
 }
 .leaflet-control.leaflet-control-colormap img {
     order: 1 !important;

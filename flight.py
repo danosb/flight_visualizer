@@ -27,8 +27,15 @@ coords_list = df['Departure Coordinates'].dropna().tolist() + df['Arrival Coordi
 # Count the frequency of each coordinate
 coords_freq = Counter(coords_list)
 
-# Define a custom color gradient
-color_map = LinearColormap(['red', 'yellow', 'green'], vmin=min(coords_freq.values()), vmax=max(coords_freq.values()))
+# Define a custom color gradient with more color stops for better distribution
+color_map = LinearColormap(['red', 'orange', 'yellow', 'lightgreen', 'green'], 
+                          vmin=min(coords_freq.values()), 
+                          vmax=max(coords_freq.values()),
+                          index=[min(coords_freq.values()), 
+                                 min(coords_freq.values()) + (max(coords_freq.values()) - min(coords_freq.values())) * 0.15,
+                                 min(coords_freq.values()) + (max(coords_freq.values()) - min(coords_freq.values())) * 0.30,
+                                 min(coords_freq.values()) + (max(coords_freq.values()) - min(coords_freq.values())) * 0.50,
+                                 max(coords_freq.values())])
 
 # Create a map centered on the average of the coordinates
 average_lat = sum(coord[0] for coord in coords_list) / len(coords_list)
